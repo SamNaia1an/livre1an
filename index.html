@@ -67,19 +67,20 @@ h1, h2, .serif { font-family: "Cormorant Garamond", serif; }
 }
 
 .hero-avatar {
-  width: clamp(64px, 12vw, 110px);
-  height: clamp(64px, 12vw, 110px);
+  width: clamp(78px, 15vw, 140px);
+  height: clamp(78px, 15vw, 140px);
   border-radius: 50%;
   overflow: hidden;
   border: 2px solid var(--gold);
   box-shadow: 0 0 0 4px var(--cream), 0 4px 14px rgba(143,111,52,0.18);
   flex: 0 0 auto;
+  background: var(--cream-deep);
 }
 .hero-avatar img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: top center;
+  object-fit: contain;
+  object-position: center 15%;
   display: block;
 }
 
@@ -94,21 +95,32 @@ h1, h2, .serif { font-family: "Cormorant Garamond", serif; }
 }
 
 .heart-badge {
-  width: 5.4rem;
-  height: 5.4rem;
-  border: 1.4px solid var(--gold);
-  border-radius: 50% 50% 50% 0;
-  transform: rotate(-45deg);
+  position: relative;
+  width: 7.2rem;
+  height: 6.4rem;
+  margin-bottom: 2.2rem;
+}
+.heart-badge svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.heart-badge svg path {
+  fill: none;
+  stroke: var(--gold);
+  stroke-width: 2.5;
+}
+.heart-badge span {
+  position: absolute;
+  inset: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 2.4rem;
-}
-.heart-badge span {
-  transform: rotate(45deg);
+  padding-top: 0.3rem;
   font-family: "Cormorant Garamond", serif;
   font-style: italic;
-  font-size: 1.1rem;
+  font-size: 1.15rem;
   color: var(--gold-deep);
   letter-spacing: 0.02em;
 }
@@ -278,15 +290,18 @@ h1, h2, .serif { font-family: "Cormorant Garamond", serif; }
 
 <section class="hero">
   <div class="hero-title-row">
-    <div class="hero-avatar"><img src="avatar-sam.jpg" alt="Sam"></div>
+    <div class="hero-avatar"><img src="avatar-sam.png" alt="Sam"></div>
     <div class="hero-title-center">
-      <div class="heart-badge"><span>1 an</span></div>
+      <div class="heart-badge">
+        <svg viewBox="0 0 100 88" preserveAspectRatio="xMidYMid meet"><path d="M50 82 C 18 58, 4 38, 4 21 C 4 7, 17 -1, 30 4 C 40 8, 47 15, 50 23 C 53 15, 60 8, 70 4 C 83 -1, 96 7, 96 21 C 96 38, 82 58, 50 82 Z"/></svg>
+        <span>1 an</span>
+      </div>
       <h1>Sam &amp; Naia</h1>
     </div>
-    <div class="hero-avatar"><img src="avatar-naia.jpg" alt="Naia"></div>
+    <div class="hero-avatar"><img src="avatar-naia.png" alt="Naia"></div>
   </div>
-  <p class="sub">Chaque dessin du livre est ne d une vraie photo. Ici, ce sont ces photos-la, page par page, telles qu on les a vecues.</p>
-  <div class="count"><span class="num" id="hero-count">.</span><span class="label">pages a<br>decouvrir</span></div>
+  <p class="sub">Chaque dessin du livre est né d’une vraie photo. Ici, ce sont ces photos-là, page par page, telles qu’on les a vécues.</p>
+  <div class="count"><span class="num" id="hero-count">.</span><span class="label">pages à<br>découvrir</span></div>
   <div class="scroll-hint">choisis une page ci-dessous</div>
 </section>
 
@@ -294,7 +309,7 @@ h1, h2, .serif { font-family: "Cormorant Garamond", serif; }
 
 <main class="pages" id="pages"></main>
 
-<footer class="site-footer">fait avec amour, pour nos ans</footer>
+<footer class="site-footer">fait pour Naia, pour que tu te rappelles toujours de cette première année &#9825;</footer>
 
 <div class="lightbox" id="lightbox">
   <button class="lightbox-close" id="lightbox-close">X</button>
@@ -338,7 +353,7 @@ function initSite() {
     if (n === 1 && !items) {
       var empty = document.createElement("div");
       empty.className = "empty-page";
-      empty.innerHTML = "<div class=\"glyph\">&#129327;&#129526;</div><p>Desole, on n a pas pris de photo... on avait trop froid !</p>";
+      empty.innerHTML = "<div class=\"glyph\">&#129327;&#129526;</div><p>Désolé, on n’a pas pris de photo... on avait trop froid !</p>";
       section.appendChild(empty);
     } else if (items && items.length) {
       var gallery = document.createElement("div");
@@ -359,7 +374,7 @@ function initSite() {
     } else {
       var soon = document.createElement("div");
       soon.className = "soon-page";
-      soon.innerHTML = "<p>Cette page arrive bientot</p>";
+      soon.innerHTML = "<p>Cette page arrive bientôt</p>";
       section.appendChild(soon);
     }
 
