@@ -237,6 +237,30 @@ h1, h2, .serif { font-family: "Cormorant Garamond", serif; }
 }
 .tile img, .tile video { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s ease; }
 .tile:hover img, .tile:hover video { transform: scale(1.03); }
+.tile-ph {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  text-align: center;
+  padding: 0.8rem;
+  background: linear-gradient(160deg, var(--paper), var(--cream-deep));
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+}
+.tile-ph.hide { opacity: 0; }
+.tile-ph .ph-emoji { font-size: clamp(1.6rem, 5vw, 2.3rem); line-height: 1; }
+.tile-ph .ph-text {
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+  font-size: 0.92rem;
+  line-height: 1.35;
+  color: var(--gold-deep);
+}
+
 .tile.video::after {
   content: "\25B6";
   position: absolute; bottom: 0.55rem; left: 0.55rem;
@@ -295,7 +319,7 @@ h1, h2, .serif { font-family: "Cormorant Garamond", serif; }
     </div>
     <div class="hero-avatar"><img src="avatar-naia.png" alt="Naia"></div>
   </div>
-  <p class="sub">Chaque dessin du livre est né d’une vraie photo. Ici, ce sont ces photos-là, page par page, telles qu’on les a vécues.</p>
+  <p class="sub">Pour réaliser ce livre, j’ai refeuilleté toutes nos photos, une par une.<br>Alors pour que tu puisses retrouver chaque moment en vrai, je t’ai créé ce site, rien que pour toi.</p>
   <div class="count"><span class="num" id="hero-count">.</span><span class="label">pages à<br>découvrir</span></div>
   <div class="scroll-hint">choisis une page ci-dessous</div>
 </section>
@@ -313,6 +337,7 @@ h1, h2, .serif { font-family: "Cormorant Garamond", serif; }
 
 <script>
 var MANIFEST = {"2": [{"type": "image", "file": "page2/image2.jpg"}, {"type": "image", "file": "page2/image3.jpg"}, {"type": "video", "file": "page2/video1.mov"}], "4": [{"type": "image", "file": "page4/image2.jpg"}, {"type": "video", "file": "page4/video1.mov"}, {"type": "video", "file": "page4/video3.mp4"}], "5": [{"type": "video", "file": "page5/video1.mp4"}], "6": [{"type": "video", "file": "page6/video1.mp4"}, {"type": "video", "file": "page6/video2.mp4"}, {"type": "video", "file": "page6/video3.mp4"}], "7": [{"type": "image", "file": "page7/image4.jpg"}, {"type": "video", "file": "page7/video1.mp4"}, {"type": "video", "file": "page7/video2.mp4"}, {"type": "video", "file": "page7/video3.mp4"}, {"type": "video", "file": "page7/video5.mp4"}, {"type": "video", "file": "page7/video6.mp4"}], "8": [{"type": "image", "file": "page8/image6.jpg"}, {"type": "image", "file": "page8/image7.jpg"}, {"type": "video", "file": "page8/video2.mov"}, {"type": "video", "file": "page8/video3.mov"}, {"type": "video", "file": "page8/video1.mp4"}, {"type": "video", "file": "page8/video4.mp4"}, {"type": "video", "file": "page8/video5.mp4"}], "9": [{"type": "video", "file": "page9/video1.mp4"}], "10": [{"type": "image", "file": "page10/image2.jpg"}, {"type": "image", "file": "page10/image3.jpg"}, {"type": "image", "file": "page10/image4.jpg"}, {"type": "video", "file": "page10/video1.mp4"}, {"type": "video", "file": "page10/video2.mp4"}, {"type": "video", "file": "page10/video3.mp4"}], "11": [{"type": "image", "file": "page11/image2.jpg"}, {"type": "image", "file": "page11/image3.jpg"}, {"type": "image", "file": "page11/image5.jpg"}, {"type": "image", "file": "page11/image6.jpg"}, {"type": "image", "file": "page11/image7.jpg"}, {"type": "image", "file": "page11/image8.jpg"}, {"type": "image", "file": "page11/image9.jpg"}, {"type": "image", "file": "page11/image10.jpg"}, {"type": "image", "file": "page11/image11.jpg"}, {"type": "video", "file": "page11/video1.mp4"}, {"type": "video", "file": "page11/video4.mp4"}, {"type": "video", "file": "page11/video5.mp4"}], "12": [{"type": "image", "file": "page12/image1.jpg"}, {"type": "image", "file": "page12/image2.jpg"}, {"type": "image", "file": "page12/image4.jpg"}, {"type": "image", "file": "page12/image5.jpg"}, {"type": "image", "file": "page12/image7.jpg"}, {"type": "video", "file": "page12/video3.mp4"}, {"type": "video", "file": "page12/video6.mp4"}, {"type": "image", "file": "page12/image8.jpg"}], "13": [{"type": "image", "file": "page13/image4.jpg"}, {"type": "image", "file": "page13/image5.jpg"}, {"type": "image", "file": "page13/image7.jpg"}, {"type": "image", "file": "page13/image9.jpg"}, {"type": "image", "file": "page13/image10.jpg"}, {"type": "video", "file": "page13/video6.mov"}, {"type": "video", "file": "page13/video8.mov"}, {"type": "video", "file": "page13/video1.mp4"}, {"type": "video", "file": "page13/video2.mp4"}, {"type": "video", "file": "page13/video3.mp4"}, {"type": "video", "file": "page13/video9.mp4"}, {"type": "video", "file": "page13/video10.mp4"}, {"type": "video", "file": "page13/video11.mp4"}, {"type": "video", "file": "page13/video12.mp4"}], "14": [{"type": "image", "file": "page14/image1.jpg"}, {"type": "image", "file": "page14/image2.jpg"}, {"type": "image", "file": "page14/image3.jpg"}, {"type": "image", "file": "page14/image5.jpg"}, {"type": "video", "file": "page14/video6.mov"}, {"type": "video", "file": "page14/video4.mp4"}, {"type": "video", "file": "page14/video7.mp4"}], "15": [{"type": "video", "file": "page15/video1.mp4"}], "16": [{"type": "image", "file": "page16/image6.jpg"}, {"type": "image", "file": "page16/image7.jpg"}, {"type": "image", "file": "page16/image8.jpg"}, {"type": "image", "file": "page16/image9.jpg"}, {"type": "image", "file": "page16/image10.jpg"}, {"type": "image", "file": "page16/image11.jpg"}, {"type": "image", "file": "page16/image12.jpg"}, {"type": "video", "file": "page16/video1.mp4"}, {"type": "video", "file": "page16/video2.mp4"}, {"type": "video", "file": "page16/video3.mp4"}, {"type": "video", "file": "page16/video4.mp4"}, {"type": "video", "file": "page16/video5.mp4"}, {"type": "video", "file": "page16/video13.mp4"}], "17": [{"type": "image", "file": "page17/image1.jpg"}, {"type": "image", "file": "page17/image3.jpg"}, {"type": "image", "file": "page17/image4.jpg"}, {"type": "image", "file": "page17/image5.jpg"}, {"type": "image", "file": "page17/image10.jpg"}, {"type": "image", "file": "page17/image11.jpg"}, {"type": "image", "file": "page17/image12.jpg"}, {"type": "image", "file": "page17/image13.jpg"}, {"type": "image", "file": "page17/image14.jpg"}, {"type": "image", "file": "page17/image16.jpg"}, {"type": "image", "file": "page17/image17.jpg"}, {"type": "image", "file": "page17/image18.jpg"}, {"type": "image", "file": "page17/image19.jpg"}, {"type": "image", "file": "page17/image20.jpg"}, {"type": "image", "file": "page17/image21.jpg"}, {"type": "video", "file": "page17/video9.mov"}, {"type": "video", "file": "page17/video2.mp4"}, {"type": "video", "file": "page17/video6.mp4"}, {"type": "video", "file": "page17/video7.mp4"}, {"type": "video", "file": "page17/video8.mp4"}, {"type": "video", "file": "page17/video15.mp4"}], "18": [{"type": "image", "file": "page18/image1.jpg"}, {"type": "image", "file": "page18/image2.jpg"}, {"type": "image", "file": "page18/image3.jpg"}, {"type": "image", "file": "page18/image4.jpg"}, {"type": "image", "file": "page18/image5.jpg"}, {"type": "image", "file": "page18/image6.jpg"}, {"type": "video", "file": "page18/video7.mp4"}, {"type": "video", "file": "page18/video8.mp4"}, {"type": "video", "file": "page18/video9.mp4"}, {"type": "video", "file": "page18/video10.mp4"}, {"type": "video", "file": "page18/video11.mp4"}, {"type": "video", "file": "page18/video12.mp4"}, {"type": "video", "file": "page18/video13.mp4"}, {"type": "video", "file": "page18/video14.mp4"}, {"type": "video", "file": "page18/video15.mp4"}, {"type": "video", "file": "page18/video16.mp4"}, {"type": "video", "file": "page18/video17.mp4"}, {"type": "video", "file": "page18/video18.mp4"}], "19": [{"type": "image", "file": "page19/image1.jpg"}, {"type": "image", "file": "page19/image3.jpg"}, {"type": "image", "file": "page19/image5.jpg"}, {"type": "image", "file": "page19/image9.jpg"}, {"type": "image", "file": "page19/image10.jpg"}, {"type": "image", "file": "page19/image11.jpg"}, {"type": "video", "file": "page19/video2.mp4"}, {"type": "video", "file": "page19/video4.mp4"}, {"type": "video", "file": "page19/video6.mp4"}, {"type": "video", "file": "page19/video7.mp4"}, {"type": "video", "file": "page19/video8.mp4"}], "3": [{"type": "video", "file": "page3/video1.mp4"}, {"type": "video", "file": "page3/video2.mp4"}, {"type": "video", "file": "page3/video3.mp4"}]};
+var THEMES = {"2": {"e": "🛏️🧸✨", "t": "Nos soirées dans ta chambre"}, "3": {"e": "🛏️😴💤", "t": "Nos siestes collés"}, "4": {"e": "💃🕺😂", "t": "Fous rires dans le hall"}, "5": {"e": "🎲👪😊", "t": "Les jeux avec les parents"}, "6": {"e": "😴🛋️💤", "t": "Encore une petite sieste"}, "7": {"e": "⚽🥅🤸", "t": "Le foot bulle entre amis"}, "8": {"e": "🌹💗💌", "t": "La surprise de la Saint-Valentin"}, "9": {"e": "🍽️🍝🥂", "t": "Notre resto tous les deux"}, "10": {"e": "🤵🌹💘", "t": "Le costume et la rose"}, "11": {"e": "🇵🇱✈️🕯️", "t": "Notre voyage en Pologne"}, "12": {"e": "🎉🪩🎂", "t": "La soirée d’anniversaire"}, "13": {"e": "🏖️🌊☀️", "t": "Nos vacances en Corse"}, "14": {"e": "🎾🏟️🏆", "t": "Roland-Garros ensemble"}, "15": {"e": "📚✏️📖", "t": "Les révisions du bac"}, "16": {"e": "🏰✨🎠", "t": "Notre journée à Disney"}, "17": {"e": "🇮🇱☀️🫒", "t": "Le voyage en Israël"}, "18": {"e": "🏖️🚤🌅", "t": "Encore la plage et le jet"}, "19": {"e": "🎊🍹🎶", "t": "La grande fête"}};
 var TOTAL_PAGES = 25;
 var EXCLUDED = [];
 
@@ -348,7 +373,7 @@ function initSite() {
     if (n === 1 && !items) {
       var empty = document.createElement("div");
       empty.className = "empty-page";
-      empty.innerHTML = "<div class=\"glyph\">&#129327;&#129526;</div><p>Désolé, on n’a pas pris de photo... on avait trop froid !</p>";
+      empty.innerHTML = "<div class=\"glyph\">🥶😜</div><p>Désolé, on n’a pas pris de photo... on avait trop froid !</p>";
       section.appendChild(empty);
     } else if (items && items.length) {
       var gallery = document.createElement("div");
@@ -357,11 +382,27 @@ function initSite() {
         var item = items[i];
         var tile = document.createElement("div");
         tile.className = "tile" + (item.type === "video" ? " video" : "");
+        var th = THEMES[n] || { e: "\u2728", t: "Un moment \u00e0 nous" };
         if (item.type === "image") {
-          tile.innerHTML = "<img src=\"" + item.file + "\" loading=\"lazy\" alt=\"Souvenir page " + n + "\">";
+          tile.innerHTML = "<img src=\"" + item.file + "\" loading=\"lazy\" alt=\"" + th.t + "\">";
         } else {
           tile.innerHTML = "<video src=\"" + item.file + "#t=0.5\" preload=\"metadata\" muted playsinline></video>";
         }
+        var ph = document.createElement("div");
+        ph.className = "tile-ph";
+        ph.innerHTML = "<div class=\"ph-emoji\">" + th.e + "</div><div class=\"ph-text\">" + th.t + "</div>";
+        tile.appendChild(ph);
+        var media = tile.querySelector("img, video");
+        (function(phEl, mediaEl){
+          function reveal(){ phEl.classList.add("hide"); }
+          if (mediaEl.tagName === "IMG") {
+            if (mediaEl.complete && mediaEl.naturalWidth > 0) { reveal(); }
+            else { mediaEl.addEventListener("load", reveal); }
+          } else {
+            mediaEl.addEventListener("loadeddata", reveal);
+            if (mediaEl.readyState >= 2) { reveal(); }
+          }
+        })(ph, media);
         tile.addEventListener("click", (function(it){ return function(){ openLightbox(it); }; })(item));
         gallery.appendChild(tile);
       }
